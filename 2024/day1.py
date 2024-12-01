@@ -28,7 +28,7 @@ def sol1a(l1: list[int], l2: list[int]) -> int:
     return sum(abs(x1 - x2) for x1, x2 in zip(sorted(l1), sorted(l2)))
 
 #%% Test that example input matches
-assert(sol1a(*get_input(example_input)) == 11)
+assert sol1a(*get_input(example_input)) == 11, "Part 1: got example input wrong"
 
 #%% Part 1 Answer
 with open('./inputs/day1.txt', 'r') as input:
@@ -44,7 +44,7 @@ def sol2a(l1: list[int], l2: list[int]) -> int:
     return sum(x * l2_counts.get(x, 0) for x in l1)
 
 # %%
-assert(sol2a(*get_input(example_input)) == 31)
+assert sol2a(*get_input(example_input)) == 31, "Part 2: got example input wrong"
 # %%
 with open('./inputs/day1.txt', 'r') as input:
     print(sol2a(*get_input(input)))
