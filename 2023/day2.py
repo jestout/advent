@@ -64,7 +64,7 @@ class Game:
 
 
 def sol2a(input):
-    return sum(x.gid for s in input if (x := Game(s)).is_possible(12, 13, 14))
+    return sum(g.gid for s in input if (g := Game(s)).is_possible(12, 13, 14))
 
 assert sol2a(input) == 8, "Part 1: got example input wrong"
 
