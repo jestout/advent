@@ -92,9 +92,9 @@ assert sol3a(example) == 4361, "Part 1: Got example input wrong!"
 with open('./inputs/03.txt', 'r') as f:
     finput = f.read()
     ans1 = sol3a(finput)
-    
+
 # %%
-def sol3a(input):
+def sol3b(input):
     prepped_input = prep_input(input)
     gear_list = dict()
     for n in get_numbos(prepped_input):
@@ -104,11 +104,11 @@ def sol3a(input):
 
     return sum([v[0].number * v[1].number for v in gear_list.values() if len(v) == 2])
 
-assert sol3a(example) == 467835, "Part 2: Got example input wrong!"
+assert sol3b(example) == 467835, "Part 2: Got example input wrong!"
 #%%
 with open('./inputs/03.txt', 'r') as f:
     finput = f.read()
-    ans2 = sol3a(finput)
+    ans2 = sol3b(finput)
 #%%
 if __name__ == '__main__':
     print(f'{ans1=}, {ans2=}')
