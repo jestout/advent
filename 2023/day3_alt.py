@@ -45,7 +45,6 @@ gear_dict = {}
 id_sum = 0
 
 for m in re.finditer("\d+", schem):
-    
     num = int(m.group())
     s_text, gears = parse_dig(m, schem)
 
