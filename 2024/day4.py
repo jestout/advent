@@ -14,9 +14,9 @@ MAMMMXMMMM
 MXMXAXMASX"""
 
 # ===================== Part 1 =====================
-
+#%%
 def search_direction(arr, pos, vec, match):
-    return all(c == arr[tuple(pos + i * vec)] for i, c in enumerate(match))
+    return all(c == arr[*(pos + i * vec)] for i, c in enumerate(match))
 
 
 def count_valid_directions(arr, pos, match):
@@ -46,10 +46,10 @@ with open('./2024/inputs/04.txt', 'r') as f:
     print(ans1)
 
 # ===================== Part 2 =====================
-
+#%%
 def valid_x(inp, pos):
-    diag1 = set(inp[tuple(pos + i * np.array([1, 1]))] for i in [1, 0, -1])
-    diag2 = set(inp[tuple(pos + i * np.array([1, -1]))] for i in [1, 0, -1])
+    diag1 = set(inp[*(pos + [i, i])] for i in [1, 0, -1])
+    diag2 = set(inp[*(pos + [i, -i])] for i in [1, 0, -1])
     return diag1 == {'M', 'A', 'S'} and diag2 == {'M', 'A', 'S'}
 
 
