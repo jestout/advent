@@ -2,7 +2,7 @@
 from functools import cmp_to_key
 from collections import defaultdict
 
-#%%
+# %%
 ex = r"""47|53
 97|13
 97|61
@@ -34,6 +34,7 @@ ex = r"""47|53
 
 # %%
 
+
 def parse_rules(rules):
     comes_before = defaultdict(set)
 
@@ -43,16 +44,20 @@ def parse_rules(rules):
 
     return comes_before
 
+
 def parse_input(input):
     rules, updates = input.split('\n\n')
+
     rules = [list(map(int, r.split('|'))) for r in rules.splitlines()]
     updates = [list(map(int, u.split(','))) for u in updates.splitlines()]
+    
     rule_dict = parse_rules(rules)
     return rule_dict, updates
 
+
 def is_update_good(update, rule_dict):
     already_seen = set()
-    
+
     for u in update:
         if not already_seen.isdisjoint(rule_dict[u]):
             return False
@@ -60,20 +65,32 @@ def is_update_good(update, rule_dict):
 
     return True
 
+
 def mid(u):
-    return u[len(u)//2]
+    return u[len(u) // 2]
+
+
 # %%
 rule_dict, updates = parse_input(ex)
-assert sum(mid(u) for u in updates if is_update_good(u, rule_dict)) == 143, "Part 1 example WRONG"
+assert (
+    sum(mid(u) for u in updates if is_update_good(u, rule_dict)) == 143
+), "Part 1 example WRONG"
 
 with open('./2024/inputs/05.txt', 'r') as f:
     rule_dict, updates = parse_input(f.read())
     ans1 = sum(mid(u) for u in updates if is_update_good(u, rule_dict))
+
+
 # %%
 def rule_cmp(x, y):
     return -1 if y in rule_dict.get(x) else 1
 
-ans2 = sum(mid(sorted(u, key=cmp_to_key(rule_cmp))) for u in updates if not is_update_good(u, rule_dict))
+
+ans2 = sum(
+    mid(sorted(u, key=cmp_to_key(rule_cmp)))
+    for u in updates
+    if not is_update_good(u, rule_dict)
+)
 # %%
 if __name__ == '__main__':
     print(f'{ans1=} {ans2=}')
