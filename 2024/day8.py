@@ -22,7 +22,7 @@ def process_input(s: str):
     for x, l in enumerate(s.splitlines()):
         for y, c in enumerate(l):
             pos = x + y * 1j
-            if c not in string.punctuation or c != '.':
+            if c not in string.punctuation:
                 freqs[c].add(pos)
             city.add(pos)
 
@@ -54,7 +54,7 @@ def anode_plot(s: str):
 assert len(find_antinodes(*process_input(ex))) == 14, "Part 1: Example wrong"
 
 
-with open('./inputs/08.txt', 'r') as f:
+with open('./2024/inputs/08.txt', 'r') as f:
     full = f.read()
     ans1 = len(find_antinodes(*process_input(full)))
     print(ans1)
@@ -67,15 +67,11 @@ def find_antinodes_line(city, freqs):
             # Find the displacement vector between them
             df = f1 - f2
             # Search in two lines
-            while True:
-                if f1 not in city:
-                    break
+            while f1 in city:
                 antinodes.add(f1)
                 f1 += df
 
-            while True:
-                if f2 not in city:
-                    break
+            while f2 in city:
                 antinodes.add(f2)
                 f2 -= df
 
@@ -83,7 +79,7 @@ def find_antinodes_line(city, freqs):
 
 assert len(find_antinodes_line(*process_input(ex))) == 34, "Part 2: Example wrong"
 
-with open('./inputs/08.txt', 'r') as f:
+with open('./2024/inputs/08.txt', 'r') as f:
     full = f.read()
     ans2 = len(find_antinodes_line(*process_input(full)))
     print(ans2)
@@ -92,3 +88,5 @@ with open('./inputs/08.txt', 'r') as f:
 if __name__ == '__main__':
     print(f'Part 1: {ans1} | Part 2: {ans2}')
 
+
+# %%
