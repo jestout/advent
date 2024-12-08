@@ -50,7 +50,6 @@ def anode_plot(s: str):
 
     return '\n'.join(''.join(l) for l in city_map)
 
-#%%
 assert len(find_antinodes(*process_input(ex))) == 14, "Part 1: Example wrong"
 
 
@@ -74,7 +73,7 @@ def find_antinodes_line(city, freqs):
             while f2 in city:
                 antinodes.add(f2)
                 f2 -= df
-
+                
     return antinodes
 
 assert len(find_antinodes_line(*process_input(ex))) == 34, "Part 2: Example wrong"
@@ -84,9 +83,5 @@ with open('./2024/inputs/08.txt', 'r') as f:
     ans2 = len(find_antinodes_line(*process_input(full)))
     print(ans2)
 
-
 if __name__ == '__main__':
     print(f'Part 1: {ans1} | Part 2: {ans2}')
-
-
-# %%
