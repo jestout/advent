@@ -1,4 +1,3 @@
-# %%
 from collections import Counter
 from math import floor, log10
 
@@ -41,7 +40,7 @@ def count_rocks(s, n):
     return n_blink(rocks, n).total()
 
 assert count_rocks('125 17', 25) == 55312, 'Part 1: Example wrong!'
-#%%
+
 with open('./inputs/11.txt', 'r') as f:
     inp = f.read()
     ans1 = count_rocks(inp, 25)
@@ -49,4 +48,4 @@ with open('./inputs/11.txt', 'r') as f:
 
 if __name__ == '__main__':
     print(f'Part 1: {ans1} | Part 2: {ans2}')
-# %%
+

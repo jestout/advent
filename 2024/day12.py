@@ -1,6 +1,5 @@
-#%%
 from collections import defaultdict
-#%%
+
 ex = r"""RRRRIICCFF
 RRRRIICCCF
 VVRRRCCFFF
@@ -11,7 +10,6 @@ VVIIICJJEE
 MIIIIIJJEE
 MIIISIJEEE
 MMMISSJEEE"""
-# %%
 
 def process_input(s):
     clusters = defaultdict(dict) # Dictionary of cluster -> position
@@ -50,7 +48,7 @@ def process_input(s):
                 positions[c][pos] = clust
 
     return positions, clusters
-# %%
+
 def measure(els):
     area = len(els)
     tmp = set()
@@ -61,7 +59,7 @@ def measure(els):
         tmp.add(pos)
 
     return area, perimeter
-# %%
+
 def calc_total_cost(cluster_list):
     total_cost = 0
 
@@ -71,15 +69,14 @@ def calc_total_cost(cluster_list):
             total_cost += area * perimeter
 
     return total_cost
-# %%
+
 pos, clust = process_input(ex)
 assert calc_total_cost(clust) == 1930, "Part 1: Example wrong!"
-# %%
+
 with open('./inputs/12.txt', 'r') as f:
     pos, clust = process_input(f.read())
     ans1 = calc_total_cost(clust)
 
-# %%
 def full_measure(els):
     area = len(els)
     tmp = set()
@@ -116,9 +113,6 @@ def full_measure(els):
 
     return area, perimeter, num_sides
 
-
-# %%
-
 def calc_total_cost_sides(cluster_list):
     total_cost = 0
 
@@ -129,11 +123,10 @@ def calc_total_cost_sides(cluster_list):
 
     return total_cost
 
-#%%
 with open('./inputs/12.txt', 'r') as f:
     pos, clust = process_input(f.read())
     ans2 = calc_total_cost_sides(clust)
-# %%
+
 if __name__ == '__main__':
     print(f'Part 1: {ans1} | Part 2: {ans2}')
 
